@@ -3,23 +3,25 @@ import random
 from character import select
 from pyglet.window import mouse
 from dp import main, match
+from reporteam import screen
+import time
+from multiprocessing import Process
 
-
+music = pyglet.resource.media('soundtrack/soundtrack.mp3')
+music.play()
 
 files, path = select()
 ninjas = []
 pos_x = []
 pos_y = []
 index = 0
-pairs = 5
+pairs = 7
+direct = 'img/character/'
+pairteam = []
 
 window = pyglet.window.Window(1200,630)
 image = pyglet.resource.image('img/background/worldmap2.jpg')
-label = pyglet.text.Label('Konoha',
-                          font_name='Times New Roman',
-                          font_size=36,
-                          x=window.width//1, y=window.height//1,
-                          anchor_x='center', anchor_y='center')
+
 
 mapping = {}
 
@@ -43,14 +45,19 @@ def on_mouse_press(x, y, button, modifiers):
         for i in range(0,len(save), 2):
             if(save[i] == -1): continue
             print(mapping[pos_x[save[i]], pos_y[save[i]]], mapping[pos_x[save[i+1]], pos_y[save[i+1]]])
-
+            pairteam.append(direct + str(mapping[pos_x[save[i]], pos_y[save[i]]]))
+            pairteam.append(direct + str(mapping[pos_x[save[i+1]], pos_y[save[i+1]]]))
         print('================================================================================================')
-
+        
+        p1 = Process(target=screen, args=(pairteam,))
+        time.sleep(2)
+        
+        p1.start()
+        
 
 @window.event
 def on_draw():
     window.clear()
-    label.draw()
     image.blit(0,0,width=window.width,height=window.height)
     for ninja in ninjas:
         ninja.draw()
