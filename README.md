@@ -25,6 +25,9 @@ O mundo atual está passando pela Primeira Grande Guerra Ninja! Você tem acesso
 * Pyglet
 * Tkinter
 
+> sudo apt-get install python3-tk
+
+> pip3 install pyglet
 
 ## Uso 
 Após efetuar o download dos requisitos 
