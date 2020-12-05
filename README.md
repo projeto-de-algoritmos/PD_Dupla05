@@ -1,4 +1,4 @@
-# NomedoProjeto
+# DP(n): Duplas Pros ninja
 
 **Número da Lista**: 5<br>
 **Conteúdo da Disciplina**: Programação Dinâmica<br>
