@@ -3,6 +3,7 @@ import glob
 import time
 
 root = tk.Tk()
+root.title("Sprites Pair Sequence")
 root.geometry("400x400")
 lst = tk.Listbox(root)
 lab = tk.Label(root, text="hello")
@@ -10,7 +11,7 @@ lab = tk.Label(root, text="hello")
 i = 1
 def showimg(e):
     global i, root
-    print("ok")
+    #print("ok")
     while True:
         try:
             global root, lst, lab

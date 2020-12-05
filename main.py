@@ -29,15 +29,16 @@ mapping = {}
 def on_mouse_press(x, y, button, modifiers):
     global index
     if ((button == mouse.LEFT or button == mouse.RIGHT or button == mouse.MIDDLE)and index < 2*pairs):
-        print('mouse clicked', x, y)
-        ninja_sprite = pyglet.resource.animation(path + files[index])
-        mapping[x, y] = str(files[index])
-        pos_x.append(x)
-        pos_y.append(y)   
-        ninja = pyglet.sprite.Sprite(ninja_sprite, x=int(x - 30), y=int(y-30))
-        ninjas.append(ninja)
-        index+=1
-        #print(mapping)
+        if(not(pos_x.count(x) and pos_y.count(y))):
+            print('mouse clicked', x, y)
+            ninja_sprite = pyglet.resource.animation(path + files[index])
+            mapping[x, y] = str(files[index])
+            pos_x.append(x)
+            pos_y.append(y)   
+            ninja = pyglet.sprite.Sprite(ninja_sprite, x=int(x - 30), y=int(y-30))
+            ninjas.append(ninja)
+            index+=1
+            #print(mapping)
     
     if ((button == mouse.LEFT or button == mouse.RIGHT or button == mouse.MIDDLE)and index == 2*pairs):
         save = main(pos_x, pos_y, pairs)
